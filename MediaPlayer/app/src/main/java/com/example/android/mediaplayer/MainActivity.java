@@ -4,6 +4,7 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +20,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void playMusic(View view){
         mediaPlayer.start();
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                Toast.makeText(MainActivity.this, "Song Over", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void pauseMusic(View view){
